@@ -1,7 +1,10 @@
+import { long, medium, short } from "../lib/timeout"
+
+
 describe('First steps with WebdriverIO', () => {
     it('Load Example Website', () => {
         browser.url('http://example.com')
-        browser.pause(3000)
+        browser.pause(short)
         expect(browser).toHaveUrl('http://example.com/')
         expect(browser).toHaveTitle('Example Domain')
     })
@@ -42,5 +45,14 @@ describe('First steps with WebdriverIO', () => {
         const button = $('#populate')
         button.waitForExist()
         expect(button).toHaveValue('Populate')
+    })
+
+    it('Save Screenshot', () => {
+        browser.saveScreenshot('test.png')
+    })
+
+    it('Change Viewport',() => {
+        browser.setWindowSize(800,600)
+        browser.pause(long)
     })
 })
