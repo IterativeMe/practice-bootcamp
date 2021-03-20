@@ -1,5 +1,5 @@
 import { long, medium, short } from "../lib/timeout"
-
+import { mobile, tablet, desktop } from "../lib/devices"
 
 describe('First steps with WebdriverIO', () => {
     it('Load Example Website', () => {
@@ -54,5 +54,20 @@ describe('First steps with WebdriverIO', () => {
     it('Change Viewport',() => {
         browser.setWindowSize(800,600)
         browser.pause(long)
+    })
+
+    it('Set Mobile View', () => {
+        browser.setWindowSize(mobile[0],mobile[1])
+        browser.pause(short)
+    })
+
+    it('Set Tablet View', () => {
+        browser.setWindowSize(tablet[0],tablet[1])
+        browser.pause(short)
+    })
+
+    it('Set Desktop View', () => {
+        browser.setWindowSize(desktop[0],desktop[1])
+        browser.pause(short)
     })
 })
