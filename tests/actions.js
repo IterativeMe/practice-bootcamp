@@ -12,4 +12,10 @@ describe('Browser Actions',() => {
         input.addValue('Aguilera')
         browser.pause(short)
     })
+
+    it('Click',() => {
+        const buttonPopulate = $("#populate")
+        browser.waitForExist()
+        buttonPopulate.click()
+    })
 })
