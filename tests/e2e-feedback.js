@@ -13,8 +13,6 @@ describe('E2E - Feedback',() => {
         $('#comment').setValue('This is a Message test')
         $('input[type="submit"]').click()
         expect(browser).toHaveUrl('http://zero.webappsecurity.com/sendFeedback.html')
-
-
     })
 
 
