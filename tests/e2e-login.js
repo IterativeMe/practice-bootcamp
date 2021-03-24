@@ -1,35 +1,35 @@
+import App from '../page-objects/App'
+import LoginPage from '../page-objects/pages/LoginPage'
+import Navbar from '../page-objects/components/Navbar'
+
 describe('E2E Tests - Login / Logout Flow',() => {
     it('Should not login with invalid credentials', () => {
-        browser.url('http://zero.webappsecurity.com/')
-        $('#signin_button').waitForExist()
-        $('#signin_button').click()
-        $('#login_form').waitForExist()
-        $('#user_login').setValue('invalid')
-        $('#user_password').setValue('invalid')
-        $('input[type="submit"]').click()
-        const error = $('.alert-error')
-        expect(error).toHaveText('Login and/or password are wrong.')
-
-
+        App.openHomePage()
+        Navbar.clickSignIn()
+        LoginPage.formIsVisible()
+        LoginPage.fillForm('invalid username','invalid password')
+        LoginPage.submitForm()
+        const message = LoginPage.error
+        expect(message).toHaveText('Login and/or password are wrong.')
     })
 
     it('Should login with valid credentials', () => {
-        browser.url('http://zero.webappsecurity.com/')
-        $('#signin_button').waitForExist()
-        $('#signin_button').click()
-        $('#login_form').waitForExist()
-        $('#user_login').setValue('username')
-        $('#user_password').setValue('password')
-        $('input[type="submit"]').click()
-        $('.nav-tabs').waitForExist()
+        App.openHomePage()
+        Navbar.clickSignIn()
+        LoginPage.formIsVisible()
+        LoginPage.fillForm('username','password')
+        LoginPage.submitForm()
+        Navbar.insideNavbarIsVisible()
     })
 
     it('Should logout from app', () => {
-        $('.icon-user').waitForExist()
-        $('.icon-user').click()
-        $('#logout_link').waitForExist()
-        $('#logout_link').click()
-        $('#pages-nav').waitForExist()
+        // $('.icon-user').waitForExist()
+        // $('.icon-user').click()
+        // $('#logout_link').waitForExist()
+        // $('#logout_link').click()
+        // $('#pages-nav').waitForExist()
+        App.logout()
+        Navbar.signInButtonIsVisible()
 
     })
 })
