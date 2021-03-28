@@ -4,22 +4,17 @@ import Navbar from '../page-objects/components/Navbar'
 
 describe('E2E Tests - Login / Logout Flow',() => {
     it('Should not login with invalid credentials', () => {
-        App.openHomePage()
-        Navbar.clickSignIn()
-        LoginPage.formIsVisible()
-        LoginPage.fillForm('invalid username','invalid password')
-        LoginPage.submitForm()
+        App.openLoginPage()
+        LoginPage.login('invalid username','invalid password')
         const message = LoginPage.error
         expect(message).toHaveText('Login and/or password are wrong.')
     })
 
     it('Should login with valid credentials', () => {
-        App.openHomePage()
-        Navbar.clickSignIn()
-        LoginPage.formIsVisible()
-        LoginPage.fillForm('username','password')
-        LoginPage.submitForm()
+        App.openLoginPage()
+        LoginPage.login('username','password')
         Navbar.insideNavbarIsVisible()
+
     })
 
     it('Should logout from app', () => {

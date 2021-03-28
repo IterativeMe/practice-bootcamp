@@ -35,6 +35,12 @@ class LoginPage extends Base {
         this.submitButton.click()
     }
 
+    login(username,password){
+        this.loginForm.waitForExist()
+        this.fillForm(username,password)
+        this.submitButton.click()
+    }
+
 }
 
 export default new LoginPage()
