@@ -1,19 +1,15 @@
 import App from '../page-objects/App'
+import FeedbackPage from '../page-objects/pages/FeedbackPage'
 
 describe('E2E - Feedback',() => {
     it('Should load feedback form', () => {
-        App.openHomePage()
-        $('#feedback').waitForExist()
-        $('#feedback').click()
-        $('form').waitForExist()
+        App.openFeedbackPage()
+        FeedbackPage.formIsVisible()
     })
 
     it('Should submit feedback form', () => {
-        $('#name').setValue('TestUser')
-        $('#email').setValue('test@test.com')
-        $('#subject').setValue('This is a test')
-        $('#comment').setValue('This is a Message test')
-        $('input[type="submit"]').click()
+        FeedbackPage.fillForm('Name','test@test.com','Subject','Message')
+        FeedbackPage.submitForm()
         expect(browser).toHaveUrl('http://zero.webappsecurity.com/sendFeedback.html')
     })
 
