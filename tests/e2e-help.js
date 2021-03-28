@@ -1,5 +1,6 @@
 import App from '../page-objects/App'
 import LoginPage from '../page-objects/pages/LoginPage'
+import HelpPage from '../page-objects/pages/HelpPage'
 import Navbar from '../page-objects/components/Navbar'
 
 describe('',() => {
@@ -10,14 +11,13 @@ describe('',() => {
     })
 
     it('Should load help',() => {
-        $('.icon-cog').click()
-        $('#help_link').waitForExist()
-        $('#help_link').click()
-        const title = $('.span8 > h3')
+        Navbar.clickSettings()
+        Navbar.clickHelp()
+        const title = HelpPage.title 
         expect(title).toHaveText('How do I log into my account?')
-        $('*=transfer funds').click()
+        HelpPage.transferFundsLink.click()
         expect(title).toHaveText('How do I transfer funds?')
-        $('*=pay bills').click()
+        HelpPage.payBillsLink.click()
         expect(title).toHaveText('How do I pay bills?')
     })
 })
