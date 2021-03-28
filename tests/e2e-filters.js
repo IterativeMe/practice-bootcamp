@@ -1,6 +1,8 @@
 import App from '../page-objects/App'
 import LoginPage from '../page-objects/pages/LoginPage'
+import FiltersPage from '../page-objects/pages/FiltersPage'
 import Navbar from '../page-objects/components/Navbar'
+import InsideNavbar from '../page-objects/components/InsideNavbar'
 
 describe('E2E Tests - Transaction Filter',() => {
     it('Should log into application',() => {
@@ -10,14 +12,13 @@ describe('E2E Tests - Transaction Filter',() => {
     })
 
     it('Transaction filter should work',() => {
-        $('#account_activity_tab').click()
-        $('#tabs > ul > li:nth-child(2) > a').waitForExist()
-        $('#tabs > ul > li:nth-child(2) > a').click()
-        $('#aa_description').waitForExist()
-        $('#aa_description').setValue('Test')
-        $('button[type="submit"]').click()
-        $('#filtered_transactions_for_account').waitForExist()
-        const message = $('.well')
+        InsideNavbar.clickAccountActivityTab()
+        InsideNavbar.clickFiltersLink()
+        FiltersPage.resultsTableIsVisible()
+        FiltersPage.fillDescription('Test')
+        FiltersPage.submitFilter()
+        const message = FiltersPage.message
         expect(message).toHaveText('No results.')
+        browser.pause(5000)
     })
 })
