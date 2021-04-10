@@ -37,8 +37,6 @@ class ExchangePage extends Base {
         const message = this.alertContent
         expect(message).toHaveText(successMessage)
     }
-        
-
 
 }
 

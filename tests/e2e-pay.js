@@ -1,6 +1,8 @@
 import App from '../page-objects/App'
 import LoginPage from '../page-objects/pages/LoginPage'
+import PayPage from '../page-objects/pages/PayPage'
 import Navbar from '../page-objects/components/Navbar'
+import InsideNavbar from '../page-objects/components/InsideNavbar'
 
 describe('E2E Tests - Pay',() => {
     it('Should log into application',() => {
@@ -10,20 +12,10 @@ describe('E2E Tests - Pay',() => {
     })
 
     it('Should make payment',() => {
-        $('#pay_bills_tab').click()
-        const selectPay = $('#sp_payee')
-        selectPay.waitForExist()
-        selectPay.selectByAttribute('value','apple')
-        const selectAccount = $('#sp_account')
-        selectAccount.waitForExist()
-        selectAccount.selectByVisibleText('Loan')
-        $('#sp_amount').setValue('500')
-        $('#sp_date').setValue('2020-03-31')
-        browser.keys('Enter')
-        $('#sp_description').setValue('Test')
-        $('#pay_saved_payees').click()
-        const message = $('#alert_content')
-        expect(message).toHaveText('The payment was successfully submitted.')
+        InsideNavbar.clickPayBillsTab()
+        PayPage.fillPaymentForm('apple','Loan',500,'2020-03-31','Testing Practice')
+        PayPage.getSuccessMessage('The payment was successfully submitted.')
+        
 
     })
 })
