@@ -33,10 +33,8 @@ class PayPage extends Base {
 
     fillPaymentForm(payee,accountType,amount,date,description){
         const selectPayee = this.selectPayee
-        selectPayee.waitForExist()
         selectPayee.selectByAttribute('value',payee)
         const selectAccount = this.selectAccount
-        selectAccount.waitForExist()
         selectAccount.selectByVisibleText(accountType)
         const inputAmount = this.inputAmount
         inputAmount.setValue(amount)

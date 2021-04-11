@@ -14,12 +14,10 @@ class HelpPage extends Base {
     }
 
     clickOnTransferFunds(){
-        this.transferFundsLink.waitForExists()
         this.transferFundsLink.click()
     }
 
     clickOnPayBills(){
-        this.payBillsLink.waitForExists()
         this.payBillsLink.click()
     }
 }

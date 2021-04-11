@@ -19,7 +19,6 @@ class FiltersPage extends Base {
     }
 
     fillDescription(text){
-        this.descriptionInput.waitForExist()
         this.descriptionInput.setValue(text)
     }
 
@@ -27,9 +26,6 @@ class FiltersPage extends Base {
         this.submitButton.click()
     }
 
-    resultsTableIsVisible(){
-        this.resultsTable.waitForExist()
-    }
 }
 
 export default new FiltersPage()

@@ -25,10 +25,6 @@ class FeedbackPage extends Base {
         return $('input[type="submit"]')
     }
 
-    formIsVisible(){
-        this.form.waitForExist()
-    }
-
     fillForm(name, email,subject,message){
         this.name.setValue(name)
         this.email.setValue(email)

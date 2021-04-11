@@ -22,10 +22,6 @@ class LoginPage extends Base {
         return $('.alert-error')
     }
 
-    formIsVisible(){
-        this.loginForm.waitForExist()
-    }
-
     fillForm(username,password){
         this.usernameInput.setValue(username)
         this.passwordInput.setValue(password)
@@ -36,7 +32,6 @@ class LoginPage extends Base {
     }
 
     login(username,password){
-        this.loginForm.waitForExist()
         this.fillForm(username,password)
         this.submitButton.click()
     }

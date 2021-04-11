@@ -7,7 +7,6 @@ describe('',() => {
     it('Should log into application',() => {
         App.openLoginPage()
         LoginPage.login('username','password')
-        Navbar.insideNavbarIsVisible()
     })
 
     it('Should load help',() => {

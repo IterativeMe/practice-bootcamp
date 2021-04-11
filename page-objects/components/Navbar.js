@@ -22,31 +22,19 @@ class Navbar extends Base {
     }
 
     search(text){
-        this.searchBox.waitForExist()
         this.searchBox.setValue(text)
         browser.keys('Enter')
     }
 
-    signInButtonIsVisible() {
-        this.signInButton.waitForExist()
-    }
-
     clickSignIn(){
-        this.signInButton.waitForExist()
         this.signInButton.click()
     }
 
-    insideNavbarIsVisible(){
-        this.insideNavbar.waitForExist()
-    }
-
     clickSettings(){
-        this.settingsButton.waitForExist()
         this.settingsButton.click()
     }
 
     clickHelp(){
-        this.helpButton.waitForExist()
         this.helpButton.click()
     }
 }

@@ -19,22 +19,18 @@ class InsideNavbar extends Base{
     }
 
     clickAccountActivityTab(){
-        this.accountActivityTab.waitForExist()
         this.accountActivityTab.click()
     }
 
     clickPayBillsTab(){
-        this.payBillsTab.waitForExist()
         this.payBillsTab.click()
     }
 
     clickFiltersLink(){
-        this.filtersLink.waitForExist()
         this.filtersLink.click()
     }
 
     clickPurchaseForeignKeyTab(){
-        this.purchaseForeignKeyTab.waitForExist()
         this.purchaseForeignKeyTab.click()
     }
 }
